@@ -8,6 +8,7 @@ app.use(cors());
 
 require("./app/UserManagement/user.route")(app) 
 require("./app/Roles_Permission_Management/role_permission.route")(app) 
+require("./app/PlansManagement/plan.route")(app) 
 
 const db = require("./app/Database/sequelize");
 db.sequelize.sync();
