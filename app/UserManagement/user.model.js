@@ -1,13 +1,16 @@
-const uuid = require('uuid/v4');
+// const uuid = require('uuid/v4');
 module.exports = (sequelize, Sequelize) =>{
     const User = sequelize.define("User_management_table", {
-        userId: {
+        id: {
             type: Sequelize.UUID,
             allowNull: false,
             primaryKey: true,
             
         },
-        fullname:{
+        firstname:{
+            type: Sequelize.STRING
+        },
+        lastname:{
             type: Sequelize.STRING
         },
         email:{
@@ -17,9 +20,6 @@ module.exports = (sequelize, Sequelize) =>{
             type: Sequelize.STRING
         },
         referralCode:{
-            type: Sequelize.STRING
-        },
-        otp:{
             type: Sequelize.STRING
         },
         securityQuestion:{
@@ -49,13 +49,17 @@ module.exports = (sequelize, Sequelize) =>{
         imageUrl: {
             type: Sequelize.STRING
         },
-        
         password:{
             type: Sequelize.STRING
         },
-        isAdmin:{
-            type: Sequelize.TEXT('tiny')
+        roles: {
+            type: Sequelize.STRING
+        },
+        isActive:{
+            type: Sequelize.BOOLEAN,
+            defaultValue: true,
         }
+        
     }) 
     return User;
 }

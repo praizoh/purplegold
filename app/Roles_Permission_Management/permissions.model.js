@@ -1,17 +1,13 @@
 module.exports = (sequelize, Sequelize) =>{
     const Permission = sequelize.define("Permission_table", {
-        permissionId: {
+        id: {
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
         },
-        name:{
+        permissionName:{
             type: Sequelize.STRING
-        },
-        isActive:{
-            type: Sequelize.TEXT('tiny'),
-            defaultValue: false,
         }
     }) 
     return Permission;
