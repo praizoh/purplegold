@@ -4,7 +4,8 @@ exports.planNameExists = async(req,res,next)=>{
     const { plan } = req.body
     try{
         const getPlan = await Plan.findPlanByName(plan);  
-        if(getPlan != null){
+        console.log(getPlan)
+        if(getPlan.length>0){
             return res.status(400).send({status:400, message:"Plan already exists"})
         }
         return next()

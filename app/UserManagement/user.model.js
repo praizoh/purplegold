@@ -8,16 +8,20 @@ module.exports = (sequelize, Sequelize) =>{
             
         },
         firstname:{
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         lastname:{
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         email:{
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         phoneNumber:{
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         referralCode:{
             type: Sequelize.STRING
@@ -61,5 +65,9 @@ module.exports = (sequelize, Sequelize) =>{
         }
         
     }) 
+
+    User.associate = (models) => {
+        User.belongsToMany(models.roles, {through:'user_role', foreignKey: 'userId', as: 'roles', timestamps:false})
+    }
     return User;
 }
